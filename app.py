@@ -60,7 +60,7 @@ def app():
         if pred_button:
             prediction, confidence = predict(uploaded_image)
             print(prediction)
-            if !prediction:
+            if prediction == 0:
                 st.subheader('The patient is not suffering from Pneumonia 😄🎉🎉')
                 st.subheader(f'Confidence of model: {confidence*100:.2f}%')
                 st.balloons()
@@ -73,7 +73,7 @@ def app():
                 st.subheader('The patient is suffering from Viral Pneumonia 😔')
                 st.subheader(f'Confidence of model: {confidence*100:.2f}%')
             
-            if prediction:
+            if prediction != 0:
                 st.markdown("---")
                 st.subheader("Specialists 👨‍⚕")
                 st.write("Click on the specialist's name to find out the nearest specialist to you ...")
