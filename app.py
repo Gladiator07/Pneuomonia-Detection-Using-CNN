@@ -10,9 +10,9 @@ def doctor_search(doctor_type):
     Searches the specialist near you
     """
     base_url = "https://www.google.com/search?q="
-    query = doctor_type.split(" ")
-    query = "+".join(query)
-    query = f"{query}+near+me"
+    query = 
+    query = 
+    query = "{}+near+me".format("+".join(doctor_type.split(" ")))
     final_url = base_url + query
 
     return final_url
