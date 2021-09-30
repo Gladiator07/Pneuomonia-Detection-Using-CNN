@@ -10,9 +10,7 @@ def doctor_search(doctor_type):
     Searches the specialist near you
     """
     base_url = "https://www.google.com/search?q="
-    query = doctor_type.split(" ")
-    query = "+".join(query)
-    query = f"{query}+near+me"
+    query = "{}+near+me".format("+".join(doctor_type.split(" ")))
     final_url = base_url + query
 
     return final_url
@@ -62,10 +60,11 @@ def app():
         if pred_button:
             prediction, confidence = predict(uploaded_image)
             print(prediction)
-            if prediction == 0:
+            if !prediction:
                 st.subheader('The patient is not suffering from Pneumonia 😄🎉🎉')
                 st.subheader(f'Confidence of model: {confidence*100:.2f}%')
                 st.balloons()
+                
             elif prediction == 1:
                 st.subheader('The patient is suffering from Bacterial Pneumonia 😔')
                 st.subheader(f'Confidence of model: {confidence*100:.2f}%')
@@ -73,8 +72,8 @@ def app():
             elif prediction == 2:
                 st.subheader('The patient is suffering from Viral Pneumonia 😔')
                 st.subheader(f'Confidence of model: {confidence*100:.2f}%')
-
-            if prediction != 0:
+            
+            if prediction:
                 st.markdown("---")
                 st.subheader("Specialists 👨‍⚕")
                 st.write("Click on the specialist's name to find out the nearest specialist to you ...")
@@ -82,6 +81,7 @@ def app():
                     doctor = f"- [{s}]({doctor_search(s)})"
                     st.markdown(doctor, unsafe_allow_html=True)
                 st.markdown("---")
+            
 
 if __name__ == "__main__":
     model = PneumoniaModel()
