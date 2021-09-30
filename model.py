@@ -20,7 +20,7 @@ class PneumoniaModel(nn.Module):
             nn.Linear(256, 128),
             nn.ReLU(),
             nn.Linear(128, 3)
-        )     # replace 1000 with 3 neurons
+        )
         
     def forward(self, x):
         return self.network(x)
